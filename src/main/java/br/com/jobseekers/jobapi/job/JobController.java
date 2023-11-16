@@ -1,8 +1,9 @@
 package br.com.jobseekers.jobapi.job;
 
-import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,23 +24,23 @@ public class JobController {
 
 
     @GetMapping
-    public List<Job> findAll() {
-        return jobService.findAll();
+    public ResponseEntity<List<Job>> findAll() {
+        return ResponseEntity.ok(jobService.findAll());
     }
 
     @PostMapping
-    public String createJob(@RequestBody Job job) {
+    public ResponseEntity<String> createJob(@RequestBody Job job) {
         jobService.createJob(job);
-        return "Job added successfully";
+        return new ResponseEntity<>("Job added successfully", HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Job getJobById(@PathVariable Long id) {
+    public ResponseEntity<Job> getJobById(@PathVariable Long id) {
         Job job = jobService.getJobById(id);
-        if (job == null) {
-            return new Job(1L, "Frontend Angular", "Style Pages Dinamic",
-            new BigDecimal("3000.00"), new BigDecimal("4200.00"), "Arizona");
+        if (job != null) {
+            return new ResponseEntity<>(job, HttpStatus.OK);
         }
-        return job;
+        
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
