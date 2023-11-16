@@ -17,8 +17,8 @@ public class Job {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.minSalary = BigDecimal.ZERO;
-        this.maxSalary = BigDecimal.ZERO;
+        this.minSalary = minSalary;
+        this.maxSalary = maxSalary;
         this.location = location;
     }
 
@@ -70,5 +70,4 @@ public class Job {
     public void setLocation(String location) {
         this.location = location;
     }
-
 }

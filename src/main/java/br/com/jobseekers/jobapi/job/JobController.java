@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,6 +51,16 @@ public class JobController {
         boolean deleted = jobService.deleteJobById(id);
         if (deleted) {
             return new ResponseEntity<>("Job deleted successfully", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateJob(@PathVariable Long id, @RequestBody Job updatedJob) {
+        boolean updated = jobService.updateJob(id, updatedJob);
+        if (updated) {
+            return new ResponseEntity<>("Job updated successfully", HttpStatus.OK);
         }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
