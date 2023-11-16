@@ -17,8 +17,8 @@ public class Job {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.minSalary = minSalary;
-        this.maxSalary = maxSalary;
+        this.minSalary = BigDecimal.ZERO;
+        this.maxSalary = BigDecimal.ZERO;
         this.location = location;
     }
 
