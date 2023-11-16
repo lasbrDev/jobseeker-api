@@ -12,7 +12,7 @@ JobAPI é uma aplicação em Spring Boot para gerenciar posições de empregos e
 1. **Clone o repositório:**
 
     ```bash
-    git clone https://seurepositorio.com/seu-usuario/JobAPI.git
+    git clone git@github.com:lasbrDev/jobseeker-api.git
     ```
 
 2. **Navegue até o diretório do projeto:**
