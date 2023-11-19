@@ -2,15 +2,28 @@ package br.com.jobseekers.jobapi.job;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "jobs")
 public class Job {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     private BigDecimal minSalary;
     private BigDecimal maxSalary;
     private String location;
+
+    public Job() {
+    }
 
 
     public Job(Long id, String title, String description, BigDecimal minSalary, BigDecimal maxSalary, String location) {
