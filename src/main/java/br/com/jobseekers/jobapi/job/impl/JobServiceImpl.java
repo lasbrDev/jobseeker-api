@@ -14,7 +14,6 @@ import br.com.jobseekers.jobapi.job.JobService;
 public class JobServiceImpl implements JobService {
 
     JobRepository jobRepository;
-    private Long nextId = 1L;
 
     public JobServiceImpl(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
@@ -30,7 +29,6 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void createJob(Job job) {
-        job.setId(nextId++);
         jobRepository.save(job);
     }
 
@@ -59,6 +57,7 @@ public class JobServiceImpl implements JobService {
                 job.setMinSalary(updatedJob.getMinSalary());
                 job.setMaxSalary(updatedJob.getMaxSalary());
                 job.setLocation(updatedJob.getLocation());
+                jobRepository.save(job);
                 return true;
         }
         return false;
