@@ -2,10 +2,12 @@ package br.com.jobseekers.jobapi.job;
 
 import java.math.BigDecimal;
 
+import br.com.jobseekers.jobapi.company.Company;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -21,6 +23,8 @@ public class Job {
     private BigDecimal minSalary;
     private BigDecimal maxSalary;
     private String location;
+    @ManyToOne
+    private Company company;
 
     public Job() {
     }
@@ -82,5 +86,14 @@ public class Job {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+
+    public Company getCompany() {
+        return this.company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
