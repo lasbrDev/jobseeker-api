@@ -7,8 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "companies")
 public class Company {
     
     @Id
@@ -16,7 +18,7 @@ public class Company {
     private Long id;
     private String name;
     private String description;
-    @OneToMany(mappedBy = "company")
+    @OneToMany
     private List<Job> jobs;
 
     public Company() {
