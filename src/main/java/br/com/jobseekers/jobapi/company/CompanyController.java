@@ -3,6 +3,7 @@ package br.com.jobseekers.jobapi.company;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,5 +42,14 @@ public class CompanyController {
     public ResponseEntity<Company> createCompany(@RequestBody Company company) {
         companyService.createCompany(company);
         return ResponseEntity.ok(company);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Company> deleteCompanyById(@PathVariable Long id) {
+        if (companyService.deleteCompanyById(id)) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
