@@ -1,9 +1,13 @@
 package br.com.jobseekers.jobapi.review;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.com.jobseekers.jobapi.company.Company;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +20,10 @@ public class Review {
     private String title;
     private String description;
     private double rating;
+
+    @JsonIgnore
+    @ManyToOne
+    private Company company;
 
     public Review() {
     }
@@ -52,4 +60,12 @@ public class Review {
         this.rating = rating;
     }
 
+
+    public Company getCompany() {
+        return this.company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 }

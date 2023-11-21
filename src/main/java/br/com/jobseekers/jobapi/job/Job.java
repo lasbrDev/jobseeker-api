@@ -23,6 +23,7 @@ public class Job {
     private BigDecimal minSalary;
     private BigDecimal maxSalary;
     private String location;
+    
     @ManyToOne
     private Company company;
 
