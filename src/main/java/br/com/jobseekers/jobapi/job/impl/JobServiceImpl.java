@@ -19,9 +19,6 @@ public class JobServiceImpl implements JobService {
         this.jobRepository = jobRepository;
     }
 
-    //private List<Job> jobs = new ArrayList<>();
-
-
     @Override
     public List<Job> findAll() {
         return jobRepository.findAll();

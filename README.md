@@ -1,59 +1,77 @@
 # JobAPI
 
-## Descrição
-JobAPI é uma aplicação em Spring Boot para gerenciar posições de empregos em aberto.
+## Visão Geral
 
-## Pré-requisitos
-- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html)
-- [Maven](https://maven.apache.org/download.cgi)
+A Job API é uma aplicação baseada em Java desenvolvida com Spring Boot, projetada para gerenciar anúncios de emprego, informações de empresas e avaliações. As principais funcionalidades incluem a capacidade de criar, recuperar, atualizar e excluir anúncios de emprego, empresas e avaliações associadas a empresas.
 
-## Configuração do Projeto
+## Arquitetura
 
-1. **Clone o repositório:**
+O projeto segue uma arquitetura padrão MVC (Model-View-Controller) e está organizado em vários pacotes:
 
-    ```bash
-    git clone git@github.com:lasbrDev/jobseeker-api.git
-    ```
+- **jobapi.job**: Contém as entidades e componentes relacionados a anúncios de emprego.
+- **jobapi.company**: Gerencia entidades e componentes relacionados a empresas.
+- **jobapi.review**: Lida com entidades e serviços para avaliações.
+- **jobapi.job.impl**, **jobapi.company.impl**, **jobapi.review.impl**: Implementações de serviços para empregos, empresas e avaliações.
+- **jobapi.jobapi**: O pacote principal contendo a classe de aplicação responsável por iniciar a aplicação Spring Boot.
+- **resources**: Arquivos de configuração e scripts de banco de dados.
 
-2. **Navegue até o diretório do projeto:**
+## Tecnologias Utilizadas
 
-    ```bash
-    cd JobAPI
-    ```
+- **Java**: A linguagem de programação usada para o desenvolvimento do backend.
+- **Spring Boot**: Um framework poderoso para construir aplicativos corporativos baseados em Java.
+- **Spring Data JPA**: Simplifica o acesso ao banco de dados usando a Java Persistence API (JPA).
+- **Jakarta Persistence API**: Um conjunto de especificações para persistir objetos Java em bancos de dados relacionais.
+- **RESTful API**: Expõe pontos de extremidade para criar, recuperar, atualizar e excluir recursos.
+- **Maven**: Gerencia dependências do projeto e construções.
+- **JUnit**: Framework para testes unitários.
+- **Swagger**: Ferramenta de documentação de API.
+- **Docker (Planejado)**: Containerização para facilitar a implantação.
+- **Banco de Dados (Planejado)**: Configurações para conexão com um banco de dados (por exemplo, PostgreSQL) e inicialmente usando o H2 para testes com o Insomnia.
 
-3. **Compile o projeto:**
+## Uso
 
-    ```bash
-    mvn clean install
-    ```
+### Endpoints
 
-## Executando a Aplicação
+- **Empregos**: `/jobs`
+  - `GET /jobs`: Recuperar todos os anúncios de emprego.
+  - `GET /jobs/{id}`: Recuperar um anúncio de emprego específico por ID.
+  - `POST /jobs`: Criar um novo anúncio de emprego.
+  - `PUT /jobs/{id}`: Atualizar um anúncio de emprego existente.
+  - `DELETE /jobs/{id}`: Excluir um anúncio de emprego.
 
-1. **Execute o seguinte comando:**
+- **Empresas**: `/companies`
+  - `GET /companies`: Recuperar todas as empresas.
+  - `GET /companies/{id}`: Recuperar uma empresa específica por ID.
+  - `POST /companies`: Criar uma nova empresa.
+  - `PUT /companies/{id}`: Atualizar uma empresa existente.
+  - `DELETE /companies/{id}`: Excluir uma empresa.
 
-    ```bash
-    java -jar target/jobapi-1.0.0.jar
-    ```
+- **Avaliações**: `/companies/{companyId}/reviews`
+  - `GET /companies/{companyId}/reviews`: Recuperar todas as avaliações para uma empresa específica.
+  - `GET /companies/{companyId}/reviews/{reviewId}`: Recuperar uma avaliação específica para uma empresa.
+  - `POST /companies/{companyId}/reviews`: Adicionar uma nova avaliação para uma empresa.
+  - `PUT /companies/{companyId}/reviews/{reviewId}`: Atualizar uma avaliação existente para uma empresa.
+  - `DELETE /companies/{companyId}/reviews/{reviewId}`: Excluir uma avaliação para uma empresa.
 
-    Certifique-se de substituir `1.0.0` pela versão atual do seu aplicativo.
+### Executando a Aplicação
 
-2. **Acesse a API em `http://localhost:8080`** no seu navegador ou ferramenta de API como o [Insomnia](https://insomnia.rest/) para começar a interagir com a aplicação.
+1. Clone o repositório.
+2. Navegue até o diretório raiz do projeto.
+3. Execute a aplicação com o seguinte comando:
 
-## Endpoints Disponíveis
+   ```bash
+   ./mvnw spring-boot:run
 
-- `GET /jobs`: Obtém a lista de todas as posições de empregos.
-- `POST /jobs`: Cria uma nova posição de emprego.
-- `GET /jobs/{id}`: Obtém detalhes de uma posição de emprego específica.
-- `PUT /jobs/{id}`: Atualiza uma posição de emprego existente.
-- `DELETE /jobs/{id}`: Exclui uma posição de emprego.
 
-## Contribuições
+### Aprimoramentos Futuros
+
+- Dockerização: Containerizar a aplicação para facilitar a implantação.
+- Integração com Banco de Dados: Implementar configurações de banco de dados para armazenar dados no PostgreSQL.
+- Escalabilidade e Refatoração de Arquitetura: Prever a possibilidade de mudanças na arquitetura conforme os requisitos e a escala da aplicação.
+
+### Contribuições
+
 Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests para melhorar este projeto.
 
-## Futuras Funcionalidades
-Este projeto ainda está em desenvolvimento, e futuras funcionalidades incluirão:
-- Integração com um banco de dados (por exemplo, PostgreSQL).
-- Dockerização da aplicação.
-
-## Licença
+### Licença
 Este projeto é licenciado sob a [MIT License](LICENSE).
