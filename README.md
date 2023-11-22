@@ -23,7 +23,7 @@ O projeto segue uma arquitetura padrão MVC (Model-View-Controller) e está orga
 - **Jakarta Persistence API**: Um conjunto de especificações para persistir objetos Java em bancos de dados relacionais.
 - **RESTful API**: Expõe pontos de extremidade para criar, recuperar, atualizar e excluir recursos.
 - **Maven**: Gerencia dependências do projeto e construções.
-- **JUnit**: Framework para testes unitários.
+- **JUnit (Planejado)**: Framework para testes unitários.
 - **Swagger (Planejado)**: Ferramenta de documentação de API.
 - **Docker (Planejado)**: Containerização para facilitar a implantação.
 - **Banco de Dados (Planejado)**: Configurações para conexão com um banco de dados (por exemplo, PostgreSQL) e inicialmente usando o H2 para testes com o Insomnia.
