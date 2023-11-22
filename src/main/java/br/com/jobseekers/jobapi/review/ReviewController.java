@@ -3,9 +3,11 @@ package br.com.jobseekers.jobapi.review;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,4 +38,20 @@ public class ReviewController {
             return ResponseEntity.ok(review);
         }
     }
+
+    @GetMapping("/reviews/{reviewId}")
+    public ResponseEntity<Review> getReview(@PathVariable Long companyId, @PathVariable Long reviewId) {
+        return ResponseEntity.ok(reviewService.getReview(companyId, reviewId));
+    }
+
+    @PutMapping("/reviews/{reviewId}")
+    public ResponseEntity<Review> updateReview(@PathVariable Long companyId, @PathVariable Long reviewId, @RequestBody Review review) {
+        return ResponseEntity.ok(reviewService.updateReview(companyId, reviewId, review));
+    }
+
+    @DeleteMapping("/reviews/{reviewId}")
+    public ResponseEntity<Review> deleteReview(@PathVariable Long companyId, @PathVariable Long reviewId) {
+        return ResponseEntity.ok(reviewService.deleteReview(companyId, reviewId)) ;
+    }
 }
+
