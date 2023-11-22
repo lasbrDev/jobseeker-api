@@ -23,7 +23,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<Review> getAllReviews(Long companyId) {
-        List<Review> reviews = reviewRepository.findAllByCompanyId(companyId);
+        List<Review> reviews = reviewRepository.findByCompanyId(companyId);
         return reviews;
     }
 
@@ -36,5 +36,14 @@ public class ReviewServiceImpl implements ReviewService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Review getReview(Long companyId, Long reviewId) {
+        List<Review> reviews = reviewRepository.findByCompanyId(companyId);
+        return reviews.stream()
+                .filter(review -> review.getId().equals(reviewId))
+                .findFirst()
+                .orElse(null);
     }
 }
