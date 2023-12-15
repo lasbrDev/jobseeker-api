@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-A Job API é uma aplicação baseada em Java desenvolvida com Spring Boot, projetada para gerenciar anúncios de emprego, informações de empresas e avaliações. As principais funcionalidades incluem a capacidade de criar, recuperar, atualizar e excluir anúncios de emprego, empresas e avaliações associadas a empresas.
+A Job API é uma aplicação baseada em Java, desenvolvida com Spring Boot e projetada para gerenciar anúncios de emprego, informações de empresas e avaliações. Suas principais funcionalidades incluem a capacidade de criar, recuperar, atualizar e excluir anúncios de emprego, empresas e avaliações associadas a essas empresas.
 
 ## Arquitetura
 
