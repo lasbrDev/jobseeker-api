@@ -33,7 +33,6 @@ public class Company {
     public Company() {
     }
 
-
     public Long getId() {
         return this.id;
     }
